@@ -76,20 +76,17 @@
            },
            "networkProfile": {
                "networkInterfaces": [
-                   {
-            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters
-            ('networkInterfaces_az204NIC_name'))]",
-                                "properties": {
-                                    "primary": true
-                                }
-                            }
-                        ]
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters
+                            ('networkInterfaces_az204NIC_name'))]",
+                                    "properties": {
+                                        "primary": true
+                                   }
+                        }]
                     }
                 },
                 "dependsOn": [
-
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters(
-            'networkInterfaces_az204NIC_name'))]"
+                    "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_az204NIC_name'))]"
                 ]
             },
             {
