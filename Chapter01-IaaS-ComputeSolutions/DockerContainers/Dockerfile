@@ -1,20 +1,16 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8.6
-
-# Set the working directory to /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define an environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
