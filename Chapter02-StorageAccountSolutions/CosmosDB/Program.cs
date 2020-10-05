@@ -10,8 +10,8 @@ namespace ch2_1_3_SQL
 {
     class Program
     {
-        //private const string EndpointUri = "<PUT YOUR ENDPOINT URL HERE>";
-        //private const string Key = "<PUT YOUR COSMOS DB KEY HERE>";
+        private const string EndpointUri = "<PUT YOUR ENDPOINT URL HERE>";
+        private const string Key = "<PUT YOUR COSMOS DB KEY HERE>";
         private CosmosClient client;
         private Database database;
         private Container container;
