@@ -39,3 +39,4 @@ msbuild.wrn
 #My Settings
 azureauth.properties
 Chapter02-StorageAccountSolutions/StorageSDKSample/appSettings.json
+Chapter02-StorageAccountSolutions/MovingBlobs/appSettings.json
